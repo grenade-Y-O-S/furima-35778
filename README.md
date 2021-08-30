@@ -11,11 +11,10 @@
 | encrypted_password | string | null: false                   |
 | last_name_kana     | string | null: false                   |
 | first_name_kana    | string | null: false                   |
-| birth_date         | string | null: false                   |
+| birth_date         | date   | null: false                   |
 
 ### Association
 - has_many :items
-- has_many :orders
 - has_many :trading_managements
 
 ## itemsテーブル
@@ -30,12 +29,10 @@
 | item_prefecture_id          | integer    | null: false                    |
 | item_scheduled_delivery_id  | integer    | null: false                    |
 | item_price                  | integer    | null: false                    |
-| item_dealing_status         | boolean    | null: false                    |
 | user                        | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
-- has_one    :order
 - has_one    :trading_management
 
 ## ordersテーブル
@@ -46,14 +43,11 @@
 | prefecture_id       | integer    | null: false                    |
 | city                | string     | null: false                    |
 | addresses           | string     | null: false                    |
-| building            | integer    |                                |
-| phone_number        | integer    | null: false                    |
+| building            | string     |                                |
+| phone_number        | string     | null: false                    |
 | trading_managements | references | null: false, foreign_key: true |
-| item_prefecture_id  | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :user
-- belongs_to :order
 - belongs_to :trading_managements
 
 ## trading_managementsテーブル
