@@ -48,7 +48,7 @@
 | trading_managements | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :trading_managements
+- belongs_to :trading_management
 
 ## trading_managementsテーブル
 
