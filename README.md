@@ -2,16 +2,16 @@
 
 ## usersテーブル
 
-| Column             | Type   | Options                       |
-| ------------------ | ------ | ----------------------------- |
-| user_name          | string | null: false                   |
-| last_name          | string | null: false                   |
-| first_name         | string | null: false                   |
-| email              | string | null: false, uniqueness: true |
-| encrypted_password | string | null: false                   |
-| last_name_kana     | string | null: false                   |
-| first_name_kana    | string | null: false                   |
-| birth_date         | date   | null: false                   |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| user_name          | string | null: false               |
+| last_name          | string | null: false               |
+| first_name         | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| last_name_kana     | string | null: false               |
+| first_name_kana    | string | null: false               |
+| birth_date         | date   | null: false               |
 
 ### Association
 - has_many :items
@@ -42,10 +42,10 @@
 | postal_code         | string     | null: false                    |
 | prefecture_id       | integer    | null: false                    |
 | city                | string     | null: false                    |
-| addresses           | string     | null: false                    |
+| address             | string     | null: false                    |
 | building            | string     |                                |
 | phone_number        | string     | null: false                    |
-| trading_managements | references | null: false, foreign_key: true |
+| trading_management  | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :trading_management
