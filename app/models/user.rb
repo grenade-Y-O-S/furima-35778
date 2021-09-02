@@ -4,18 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  #VALID_EMAIL_REGIX = /.+/@.+/
-
-#  validates_presence_of :email :encrypted_password :user_name :last_name :first_name :last_name_kana :first_name_kana :birth_date
+  validates :password, format: { with: /^[0-9a-zA-Z]*$/ }
 
   with_options presence: true do
-    validates :email, uniqueness: true, format: { with: /.+\u0040.+/ }
-    validates :encrypted_password, length: { minimum: 6 }
     validates :user_name
-    validates :last_name
-    validates :first_name
-    validates :last_name_kana
-    validates :first_name_kana
+    validates :last_name, format: { with: /[^\x01-\x7E]+/ }
+    validates :first_name, format: { with: /[^\x01-\x7E]+/ }
+    validates :last_name_kana, format: { with: /[ァ-ヴ]+/ }
+    validates :first_name_kana, format: { with: /[ァ-ヴ]+/ }
     validates :birth_date
   end
 
