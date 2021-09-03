@@ -8,10 +8,10 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :user_name
-    validates :last_name, format: { with: /[^\x01-\x7E]+/ }
-    validates :first_name, format: { with: /[^\x01-\x7E]+/ }
-    validates :last_name_kana, format: { with: /[ァ-ヴ]+/ }
-    validates :first_name_kana, format: { with: /[ァ-ヴ]+/ }
+    validates :last_name, format: { with: /^[ぁ-んァ-ヶ亜-熙]+$/ }
+    validates :first_name, format: { with: /^[ぁ-んァ-ヶ亜-熙]+$/ }
+    validates :last_name_kana, format: { with: /^[ァ-ヴー]+$/ }
+    validates :first_name_kana, format: { with: /^[ァ-ヴー]+$/ }
     validates :birth_date
   end
 
