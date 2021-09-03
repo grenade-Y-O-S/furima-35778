@@ -4,14 +4,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  NAME_REGEX = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/.freeze
+  KANA_REGEX = /\A[ァ-ヴー]+\z/.freeze
+
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
 
   with_options presence: true do
     validates :user_name
-    validates :last_name, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
-    validates :first_name, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
-    validates :last_name_kana, format: { with: /\A[ァ-ヴー]+\z/ }
-    validates :first_name_kana, format: { with: /\A[ァ-ヴー]+\z/ }
+    validates :last_name, format: { with: NAME_REGEX }
+    validates :first_name, format: { with: NAME_REGEX }
+    validates :last_name_kana, format: { with: KANA_REGEX }
+    validates :first_name_kana, format: { with: KANA_REGEX }
     validates :birth_date
   end
 
