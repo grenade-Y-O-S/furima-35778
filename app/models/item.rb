@@ -1,13 +1,14 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
+
+  belongs_to :user
+  has_one_attached :image
+
   belongs_to :item_category
   belongs_to :item_fee_shipping_status
   belongs_to :item_prefecture
   belongs_to :item_sales_status
   belongs_to :item_scheduled_delivery
-
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
 
   with_options presence: true do
     validates :item_name
