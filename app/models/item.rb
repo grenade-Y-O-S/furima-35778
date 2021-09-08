@@ -11,6 +11,7 @@ class Item < ApplicationRecord
   belongs_to :item_scheduled_delivery
 
   with_options presence: true do
+    validates :image
     validates :item_name
     validates :item_info
     with_options numericality: { other_than: 0 } do
