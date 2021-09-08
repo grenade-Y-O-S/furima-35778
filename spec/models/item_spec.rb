@@ -63,6 +63,11 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include "Item price must be less than or equal to 9999999"
       end
+      it 'item_priceが半角数字以外だと登録できない' do
+        @item.item_price = "１００００"
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Item price is not a number"
+      end
     end
   end
 end
