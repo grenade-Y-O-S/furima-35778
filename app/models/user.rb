@@ -9,7 +9,7 @@ class User < ApplicationRecord
   NAME_REGEX = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/.freeze
   KANA_REGEX = /\A[ァ-ヴー]+\z/.freeze
 
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
 
   with_options presence: true do
     validates :user_name
@@ -19,5 +19,4 @@ class User < ApplicationRecord
     validates :first_name_kana, format: { with: KANA_REGEX }
     validates :birth_date
   end
-
 end
