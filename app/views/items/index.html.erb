@@ -129,7 +129,7 @@
       <% if Item.exists? %>
         <% @items.each do |item| %>
           <li class='list'>
-            <%= link_to "#" do %>
+            <%= link_to item_path(item) do %>
             <div class='item-img-content'>
               <%= image_tag item.image, class: "item-img" %>
           <%# sold outを表示する所 %>
@@ -139,7 +139,7 @@
                 <%= item.item_name %>
               </h3>
               <div class='item-price'>
-                <span><%= item.item_price %>円<br><%= ItemFeeShippingStatus.find(item.item_fee_shipping_status_id).name %></span>
+                <span><%= item.item_price %>円<br><%= item.item_fee_shipping_status.name %></span>
                 <div class='star-btn'>
                   <%= image_tag "star.png", class:"star-icon" %>
                   <span class='star-count'>0</span>
