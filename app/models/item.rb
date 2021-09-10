@@ -25,4 +25,3 @@ class Item < ApplicationRecord
                            format: { with: /\A[0-9]+\z/ }
   end
 end
-
