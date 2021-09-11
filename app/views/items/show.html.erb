@@ -27,7 +27,7 @@
       <%# ログインユーザーと出品したユーザーが同一人物の時のみ表示 %>
         <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
         <p class="or-text">or</p>
-        <%= link_to "削除", "#", method: :delete, class:"item-destroy" %>
+        <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
       <%# //ログインユーザーと出品したユーザーが同一人物の時のみ表示 %>
       <% else %>
       <%# 商品が売れていない、かつ、ログインしているユーザーと出品しているユーザーが同一人物ではない場合に表示 %>
