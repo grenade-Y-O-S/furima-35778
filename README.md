@@ -26,7 +26,7 @@
 | item_category_id            | integer    | null: false                    |
 | item_sales_status_id        | integer    | null: false                    |
 | item_fee_shipping_status_id | integer    | null: false                    |
-| item_prefecture_id          | integer    | null: false                    |
+| prefecture_id          | integer    | null: false                    |
 | item_scheduled_delivery_id  | integer    | null: false                    |
 | item_price                  | integer    | null: false                    |
 | user                        | references | null: false, foreign_key: true |

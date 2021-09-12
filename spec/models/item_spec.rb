@@ -43,8 +43,8 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include 'Item fee shipping status must be other than 0'
       end
-      it 'item_prefecture_idが「---」では保存できない' do
-        @item.item_prefecture_id = 0
+      it 'prefecture_idが「---」では保存できない' do
+        @item.prefecture_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include 'Item prefecture must be other than 0'
       end

@@ -1,5 +1,4 @@
 class Prefecture < ActiveHash::Base
-#class Prefecture < ItemPrefecture
   self.data = [
     { id: 0, name: '---' },
     { id: 1, name: '北海道' },
@@ -52,5 +51,6 @@ class Prefecture < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :orders
+  has_many :items
+  has_many :oreders
 end
