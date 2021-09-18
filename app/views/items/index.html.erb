@@ -130,32 +130,30 @@
         <% @items.each do |item| %>
           <li class='list'>
             <%= link_to item_path(item) do %>
-            <div class='item-img-content'>
-              <%= image_tag item.image, class: "item-img" %>
-          <%# sold outを表示する所 %>
-            </div>
-            <div class='item-info'>
-              <h3 class='item-name'>
+              <div class='item-img-content'>
+                <%= image_tag item.image, class: "item-img" %>
+                <% if TradingManagement.find_by(item_id: item.id) %>
+                  <div class='sold-out'>
+                  <span>Sold Out!!</span>
+                  </div>
+                <% end %>
+              </div>
+              <div class='item-info'>
+                <h3 class='item-name'>
                 <%= item.item_name %>
-              </h3>
-              <div class='item-price'>
-                <span><%= item.item_price %>円<br><%= item.item_fee_shipping_status.name %></span>
-                <div class='star-btn'>
-                  <%= image_tag "star.png", class:"star-icon" %>
-                  <span class='star-count'>0</span>
+                </h3>
+                <div class='item-price'>
+                  <span><%= item.item_price %>円<br><%= item.item_fee_shipping_status.name %></span>
+                  <div class='star-btn'>
+                    <%= image_tag "star.png", class:"star-icon" %>
+                    <span class='star-count'>0</span>
+                  </div>
                 </div>
               </div>
-            </div>
             <% end %>
           </li>
         <% end %>
       <% else %>
-
-          <%# 商品が売れていればsold outを表示しましょう %>
-          <%# <div class='sold-out'> %>
-            <%# <span>Sold Out!!</span> %>
-          <%# </div> %>
-          <%# //商品が売れていればsold outを表示しましょう %>
 
           <li class='list'>
             <%= link_to '#' do %>
