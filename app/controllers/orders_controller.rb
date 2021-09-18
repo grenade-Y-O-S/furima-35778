@@ -8,7 +8,6 @@ class OrdersController < ApplicationController
 
   def create
     @furima_trade = FurimaTrade.new(order_params)
-    binding.pry
     if @furima_trade.valid?
       pay_item
       @furima_trade.save
@@ -21,7 +20,8 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:furima_trade).permit(:postal_code, :prefecture_id, :city, :address, :building, :phone_number).merge(token: params[:token], user_id: current_user.id, item_id: params[:item_id])
+    params.require(:furima_trade).permit(:postal_code, :prefecture_id, :city, :address, :building, :phone_number)
+    .merge(token: params[:token], user_id: current_user.id, item_id: params[:item_id])
   end
 
   def set_item
@@ -29,8 +29,7 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ""
-    #payjpテスト秘密鍵
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
     amount: @item.item_price,
     card: order_params[:token],
