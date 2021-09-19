@@ -46,7 +46,7 @@ RSpec.describe Item, type: :model do
       it 'prefecture_idが「---」では保存できない' do
         @item.prefecture_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Item prefecture must be other than 0'
+        expect(@item.errors.full_messages).to include 'Prefecture must be other than 0'
       end
       it 'item_scheduled_delivery_idが「---」では保存できない' do
         @item.item_scheduled_delivery_id = 0

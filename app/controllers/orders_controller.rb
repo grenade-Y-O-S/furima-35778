@@ -3,6 +3,9 @@ class OrdersController < ApplicationController
   before_action :set_item
 
   def index
+    if (current_user == @item.user) || ((current_user != @item.user) && TradingManagement.find_by(item_id: @item.id))
+      return redirect_to root_path
+    end
     @furima_trade = FurimaTrade.new
   end
 
