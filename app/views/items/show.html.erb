@@ -22,23 +22,15 @@
       </span>
     </div>
     <% unless TradingManagement.find_by(item_id: @item.id) %>
-    <%# 商品が売れていない時のみ表示 %>
       <% if user_signed_in? %>
-      <%# ログイン状態のみ表示 %>
         <% if current_user == @item.user %>
-        <%# ログインユーザーと出品したユーザーが同一人物の時のみ表示 %>
           <%= link_to "商品の編集", edit_item_path(@item.id), class: "item-red-btn" %>
           <p class="or-text">or</p>
           <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
-        <%# //ログインユーザーと出品したユーザーが同一人物の時のみ表示 %>
         <% else %>
-        <%# 商品が売れていない、かつ、ログインしているユーザーと出品しているユーザーが同一人物ではない場合に表示 %>
           <%= link_to "購入画面に進む", item_orders_path(@item.id), class:"item-red-btn"%>
-        <%# //商品が売れていない、かつ、ログインしているユーザーと出品しているユーザーが同一人物ではない場合に表示 %>
         <% end %>
-      <%# //ログイン状態のみ表示 %>
       <% end %>
-    <%# //商品が売れていない時のみ表示 %>
     <% end %>
 
     <div class="item-explain-box">

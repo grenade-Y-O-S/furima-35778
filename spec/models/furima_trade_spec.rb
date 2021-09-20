@@ -7,7 +7,11 @@ RSpec.describe FurimaTrade, type: :model do
 
   describe '商品購入' do
     context '購入できる場合' do
-      it '必要な項目が存在すれば登録できる' do
+      it '必要な項目が存在すれば購入できる' do
+        expect(@furima_trade).to be_valid
+      end
+      it '建物名が空でも購入できる' do
+        @furima_trade.building = ''
         expect(@furima_trade).to be_valid
       end
     end
@@ -48,9 +52,7 @@ RSpec.describe FurimaTrade, type: :model do
         @furima_trade.valid?
         expect(@furima_trade.errors.full_messages).to include "Item can't be blank"
       end
-#      it 'カード番号が空では保存できない' do
-#        @furima_trade.token[:number] = ''
-      it 'カード情報(全て)が空では保存できない' do
+      it 'tokenが空では保存できない' do
         @furima_trade.token = ''
         @furima_trade.valid?
         expect(@furima_trade.errors.full_messages).to include "Token can't be blank"
@@ -69,6 +71,11 @@ RSpec.describe FurimaTrade, type: :model do
         @furima_trade.phone_number = '01234567890123456789'
         @furima_trade.valid?
         expect(@furima_trade.errors.full_messages).to include "Phone number is too long (maximum is 11 characters)"
+      end
+      it '電話番号に半角数字以外が含まれていると保存できない' do
+        @furima_trade.phone_number = '012345678Q'
+        @furima_trade.valid?
+        expect(@furima_trade.errors.full_messages).to include "Phone number is invalid"
       end
     end
   end

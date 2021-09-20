@@ -8,7 +8,7 @@ class FurimaTrade
     validates :prefecture_id, numericality: { other_than: 0 }
     validates :city
     validates :address
-    validates :phone_number, length: { in: 10..11 }, format: { with: /\d+/ }
+    validates :phone_number, length: { in: 10..11 }, format: { with: /\d{10,11}/ }
     validates :user_id
     validates :item_id
   end

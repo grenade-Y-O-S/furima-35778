@@ -5,6 +5,7 @@ FactoryBot.define do
     prefecture_id { rand(1..47) }
     city { '山川市' }
     address { '123-45' }
+    building { 'ABCマンション' }
     phone_number { '0123456789' }
     user_id { rand(1..99) }
     item_id { rand(1..99) }
