@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe FurimaTrade, type: :model do
   before do
     @furima_trade = FactoryBot.build(:furima_trade)
+    sleep 0.05
+    #　sleepを入れないとエラーが出てしまう
   end
 
   describe '商品購入' do

@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :furima_trade do
+    user_id { (FactoryBot.create(:user).id) }
+    item_id { (FactoryBot.create(:item).id) }
     token { make_token }
     postal_code { '123-4567' }
     prefecture_id { rand(1..47) }
@@ -7,8 +9,6 @@ FactoryBot.define do
     address { '123-45' }
     building { 'ABCマンション' }
     phone_number { '0123456789' }
-    user_id { rand(1..99) }
-    item_id { rand(1..99) }
   end
 end
 
