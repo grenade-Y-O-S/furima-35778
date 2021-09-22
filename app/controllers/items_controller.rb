@@ -24,7 +24,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-#    binding.pry
     redirect_to root_path if TradingManagement.find_by(item_id: @item.id)
   end
 
