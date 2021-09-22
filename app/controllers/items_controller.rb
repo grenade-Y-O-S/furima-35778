@@ -24,9 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if TradingManagement.find_by(item_id: @item.id)
-      redirect_to root_path
-    end
+    redirect_to root_path if TradingManagement.find_by(item_id: @item.id)
   end
 
   def update
